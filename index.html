@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPA / CGPA Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="summary-sidebar">
+    <div class="card">
+      <h3>Current Semester GPA</h3>
+      <p class="big-number" id="semesterGpa">0.00</p>
+    </div>
+    <div class="card">
+      <h3>Running CGPA</h3>
+      <p class="big-number" id="runningCgpa">0.00</p>
+    </div>
+    <div class="card highlight">
+      <h3>Projected CGPA</h3>
+      <p class="big-number" id="projectedCgpa">0.00</p>
+      <p class="card-note">with What-If</p>
+    </div>
+  </aside>
+  <div class="container">
+    <header>
+      <h1>GPA / CGPA Calculator</h1>
+      <p>Select semester to add subjects and calculate GPA.</p>
+    </header>
+    <section class="mode-toggle">
+      <label>
+        <input type="checkbox" id="whatIfMode">
+        Enable "What-If" mode (simulate future semesters)
+      </label>
+    </section>
+    <section class="panel">
+      <h2>All Semesters</h2>
+      <div id="semestersOverview"></div>
+    </section>
+    <section class="panel">
+      <div class="panel-header">
+        <h2 id="currentSemesterTitle">Semester 1</h2>
+        <button type="button" class="btn btn-secondary" id="addSemesterBtn">+ Add New Semester</button>
+      </div>
+      <form id="subjectForm" class="subject-form">
+        <input type="text" id="subjectName" placeholder="Subject name (e.g. Mathematics)" required>
+        <input type="number" id="subjectCredits" placeholder="Credits" min="1" max="20" required>
+        <select id="subjectGrade" required>
+          <option value="">Select grade</option>
+          <option value="10">S (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B (8)</option>
+          <option value="7">C (7)</option>
+          <option value="6">D (6)</option>
+          <option value="5">E (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Add Subject</button>
+      </form>
+      <table class="subject-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Credits</th>
+            <th>Grade</th>
+            <th>Points</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="subjectList">
+        </tbody>
+      </table>
+      <p class="semester-gpa-text">This semester GPA: <strong id="currentSemGpa">0.00</strong></p>
+    </section>
+    <section class="panel what-if-panel" id="whatIfPanel" style="display: none;">
+      <h2>What-If: Future Semesters</h2>
+      <p class="hint">Add expected subjects for upcoming semesters to see your projected CGPA at graduation.</p>
+      <div class="panel-header">
+        <h3 id="futureSemesterTitle">Future Semester 1</h3>
+        <button type="button" class="btn btn-secondary" id="addFutureSemesterBtn">+ Add Future Semester</button>
+      </div>
+      <form id="futureSubjectForm" class="subject-form">
+        <input type="text" id="futureSubjectName" placeholder="Subject name" required>
+        <input type="number" id="futureSubjectCredits" placeholder="Credits" min="1" max="20" required>
+        <select id="futureSubjectGrade" required>
+          <option value="">Select grade</option>
+          <option value="10">O (10)</option>
+          <option value="9">A+ (9)</option>
+          <option value="8">A (8)</option>
+          <option value="7">B+ (7)</option>
+          <option value="6">B (6)</option>
+          <option value="5">C (5)</option>
+          <option value="4">D (4)</option>
+          <option value="0">F (0)</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Add Future Subject</button>
+      </form>
+      <table class="subject-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Credits</th>
+            <th>Grade</th>
+            <th>Points</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="futureSubjectList"></tbody>
+      </table>
+    </section>
+    <footer>
+      <p>Formula: GPA = (Sum of grade points × credits) / (Total credits)</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

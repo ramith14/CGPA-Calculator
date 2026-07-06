@@ -1,0 +1,297 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Fixed left sidebar for GPA stats */
+.summary-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: #1a365d;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.container {
+  max-width: 900px;
+  margin-left: 240px;
+  margin-right: auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  color: #1a365d;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #666;
+}
+
+/* Summary cards in sidebar */
+.summary-sidebar .card {
+  background: white;
+  padding: 20px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.summary-sidebar .card.highlight {
+  border: 2px solid #63b3ed;
+  background: #ebf8ff;
+}
+
+.summary-sidebar .card h3 {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.summary-sidebar .big-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
+.summary-sidebar .card-note {
+  font-size: 11px;
+  color: #718096;
+  margin-top: 4px;
+}
+
+/* Mode toggle */
+.mode-toggle {
+  background: #ebf8ff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.mode-toggle label {
+  cursor: pointer;
+  font-weight: bold;
+  color: #2c5282;
+}
+
+/* Panels */
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.panel h2 {
+  color: #1a365d;
+  margin-bottom: 16px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.what-if-panel {
+  border: 2px dashed #3182ce;
+  background: #f7fafc;
+}
+
+.hint {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Forms */
+.subject-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.subject-form input,
+.subject-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.subject-form input[type="text"] {
+  flex: 2;
+  min-width: 150px;
+}
+
+.subject-form input[type="number"],
+.subject-form select {
+  flex: 1;
+  min-width: 100px;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #3182ce;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2b6cb0;
+}
+
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #cbd5e0;
+}
+
+.btn-danger {
+  background-color: #e53e3e;
+  color: white;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.btn-danger:hover {
+  background-color: #c53030;
+}
+
+/* Table */
+.subject-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+.subject-table th,
+.subject-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.subject-table th {
+  background-color: #edf2f7;
+  font-weight: bold;
+}
+
+.subject-table tr:hover {
+  background-color: #f7fafc;
+}
+
+.semester-gpa-text {
+  text-align: right;
+  color: #666;
+}
+
+/* Semester overview cards */
+.semester-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.semester-card.future {
+  border-style: dashed;
+  background: #ebf8ff;
+}
+
+.semester-card-info h4 {
+  color: #1a365d;
+}
+
+.semester-card-info p {
+  font-size: 13px;
+  color: #666;
+}
+
+.semester-card-actions button {
+  margin-left: 8px;
+}
+
+footer {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .summary-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .summary-sidebar .card {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .summary-sidebar {
+    flex-direction: column;
+  }
+
+  .subject-form {
+    flex-direction: column;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
